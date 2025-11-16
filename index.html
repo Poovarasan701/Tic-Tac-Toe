@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Tic-Tac-Toe — AI, Sound, Confetti, Online</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <header class="top">
+      <h1>Tic-Tac-Toe</h1>
+      <div class="controls">
+        <button id="themeToggle" class="btn">🌙</button>
+        <button id="resetBtn" class="btn">Restart</button>
+      </div>
+    </header>
+
+    <section class="panel settings">
+      <div class="row">
+        <label>Mode:</label>
+        <select id="modeSelect">
+          <option value="single">Single Player (vs AI)</option>
+          <option value="local">Local 2-Player</option>
+          <option value="online">Online (P2P)</option>
+        </select>
+      </div>
+
+      <div class="row" id="aiSettings">
+        <label>Difficulty:</label>
+        <select id="difficulty">
+          <option value="easy">Easy</option>
+          <option value="hard">Hard</option>
+        </select>
+        <label style="margin-left:12px">You play as:</label>
+        <select id="playerMark">
+          <option value="X">X (first)</option>
+          <option value="O">O (second)</option>
+        </select>
+      </div>
+
+      <div class="row" id="onlineControls" style="display:none">
+        <button id="createOffer" class="btn">Create Offer</button>
+        <button id="createAnswer" class="btn">Create Answer</button>
+        <button id="connectClear" class="btn ghost">Clear</button>
+      </div>
+
+      <textarea id="signalingBox" placeholder="Paste offer/answer here for manual signaling"></textarea>
+      <div class="small">Copy the created offer, send to opponent, paste their answer back here. (No server required.)</div>
+    </section>
+
+    <section class="panel board-wrap">
+      <div id="status" class="status">Player X's turn</div>
+      <div id="board" class="board" role="grid" aria-label="tic tac toe board">
+        <!-- cells injected by JS -->
+      </div>
+    </section>
+
+    <section class="panel leaderboard">
+      <h3>Leaderboard</h3>
+      <div class="stats">
+        <div>Wins: <strong id="wins">0</strong></div>
+        <div>Losses: <strong id="losses">0</strong></div>
+        <div>Draws: <strong id="draws">0</strong></div>
+      </div>
+      <div class="row">
+        <button id="clearStats" class="btn ghost">Clear Stats</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- simple confetti canvas -->
+  <canvas id="confettiCanvas" class="confetti"></canvas>
+
+  <script src="script.js"></script>
+</body>
+</html>
