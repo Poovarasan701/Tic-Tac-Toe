@@ -1,0 +1,46 @@
+:root{
+  --bg:#f3f6fb; --panel:#fff; --muted:#6b7280; --accent:#6b21e8;
+  --radius:14px;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter,system-ui,Arial;background:var(--bg);color:#0f172a}
+.container{max-width:920px;margin:18px auto;padding:16px}
+.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+h1{font-size:20px;margin:0}
+.controls{display:flex;gap:8px}
+.btn{background:var(--accent);color:#fff;border:0;padding:8px 12px;border-radius:10px;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--accent);border:1px solid rgba(107,33,232,0.14)}
+.panel{background:var(--panel);padding:12px;border-radius:var(--radius);box-shadow:0 8px 28px rgba(12,18,36,0.06);margin-bottom:12px}
+.settings .row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+label{font-weight:600;color:var(--muted)}
+select, textarea{padding:8px;border-radius:8px;border:1px solid #e6edf6;background:#fff}
+textarea{width:100%;height:80px;resize:vertical;margin-top:8px}
+.small{font-size:12px;color:var(--muted);margin-top:6px}
+
+/* board */
+.board-wrap{display:flex;flex-direction:column;align-items:center;gap:12px}
+.status{font-weight:700;color:var(--muted)}
+.board{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:6px;width:min(420px,92vw)}
+.cell{aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;font-size:48px;background:#fbfdff;border-radius:10px;cursor:pointer;
+ box-shadow:0 8px 20px rgba(12,18,36,0.04);transition:transform .12s,background .12s}
+.cell:hover{transform:translateY(-4px)}
+.cell.win{animation: pulse 700ms ease-in-out 0s 2}
+@keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.08)}100%{transform:scale(1)}}
+
+/* leaderboard */
+.leaderboard .stats{display:flex;gap:14px;justify-content:center;padding:8px 0}
+.leaderboard strong{color:var(--accent)}
+
+/* confetti canvas */
+.confetti{position:fixed;left:0;top:0;pointer-events:none;z-index:200}
+
+/* Responsive */
+@media(min-width:900px){
+  .container{display:grid;grid-template-columns:1fr 360px;gap:16px}
+  .board-wrap{grid-column:1}
+  .leaderboard{grid-column:2;align-self:start}
+}
+@media(max-width:420px){
+  .cell{font-size:34px}
+  h1{font-size:18px}
+}
